@@ -1,0 +1,17 @@
+# Ignoruj pliki generowane przez kompilator SCSS
+*.css
+
+# Ignoruj pliki mapy źródłowej SCSS
+*.map
+
+# Ignoruj katalogi node_modules
+node_modules/
+
+# Ignoruj pliki konfiguracyjne dla npm
+package-lock.json
+npm-debug.log
+
+# Ignoruj pliki tymczasowe
+*.log
+*.swp
+*.tmp
