@@ -1,3 +1,4 @@
+@import "abstracts/mixins";
 @import "base/reset";
 @import "base/typography.scss";
 
@@ -14,11 +15,18 @@ body {
 
 .video-container {
   position: relative;
-  width: 100%;
+
+  // width: 100%;
   height: 105vh;
-  overflow-y: hidden;
+  overflow: hidden;
 
   &::after {
+    @include for-tablet-landscape {
+      background: #8e0500 0 0 no-repeat padding-box;
+      opacity: 0.73;
+
+      mix-blend-mode: multiply;
+    }
     content: "";
     position: absolute;
     top: 0;
@@ -31,25 +39,67 @@ body {
   }
 }
 
-.video {
+.video--bath {
   position: absolute;
   top: -5rem;
-  width: 100%;
+  width: auto;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+}
+
+.video--presents {
+  position: absolute;
+  display: none;
+  width: auto;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+}
+
+@include for-tablet-landscape {
+  .video--bath {
+    display: none;
+  }
+  .video--presents {
+    display: block;
+  }
 }
 
 .header {
+  @include for-tablet-landscape {
+    padding: 3rem 2vw;
+    column-gap: 25px;
+
+    grid-template-columns: 1fr 5fr 1fr;
+  }
+
+  @include for-phone-only {
+    padding: 2.5rem 2rem;
+    column-gap: 20px;
+
+    grid-template-columns: 1.5fr 1fr;
+  }
   position: absolute;
   z-index: 100;
   display: grid;
   width: 100%;
   padding: 3rem 5vw;
-  column-gap: 5rem;
+  column-gap: 50px;
 
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 2.5fr 1fr;
   grid-template-rows: 1fr 1fr;
   row-gap: 2rem;
 
   .logo {
+    @include for-tablet-landscape {
+      height: 1.8rem;
+      gap: 13px;
+    }
+
+    //   @include for-tablet-portrait {
+    //   height: ;
+    // }
     display: flex;
     align-self: center;
     height: 2.2rem;
@@ -60,6 +110,18 @@ body {
   }
 
   .search {
+    @include for-tablet-landscape {
+      input {
+        font-size: 1.6rem;
+      }
+    }
+
+    @include for-phone-only {
+      // width: 95%;
+      // margin: 0 auto;
+      grid-column: 1 / span 2;
+      grid-row: 2;
+    }
     position: relative;
 
     grid-column: 2;
@@ -83,6 +145,20 @@ body {
   }
 
   .actions {
+    @include for-tablet-landscape {
+      gap: 30px;
+    }
+
+    @include for-tablet-portrait {
+      gap: 16px;
+      span {
+        display: none;
+      }
+    }
+
+    @include for-phone-only {
+      grid-column: 2;
+    }
     display: flex;
     align-items: center;
     gap: 60px;
@@ -92,10 +168,15 @@ body {
     justify-self: flex-end;
 
     &__auth {
+      // @include for-tablet-landscape {
+      //   span {
+      //     // display: none;
+      //   }
+      // }
       display: flex;
       align-items: center;
       font-size: 1.5rem;
-      gap: 1rem;
+      gap: 8px;
       svg {
         width: 2.1rem;
         height: 2.1rem;
@@ -114,12 +195,18 @@ body {
   }
 
   .offer {
+    @include for-tablet-portrait {
+      display: none;
+    }
     grid-column: 2;
     grid-row: 2;
     justify-self: flex-start;
   }
 
   .info {
+    @include for-tablet-portrait {
+      display: none;
+    }
     grid-column: 3;
     grid-row: 2;
     justify-self: flex-end;
@@ -127,25 +214,26 @@ body {
 }
 
 .nav__list {
+  @include for-tablet-landscape {
+    gap: 15px;
+  }
   display: flex;
   align-items: center;
-  gap: 3rem;
-
+  gap: 26px;
   .nav__link a {
     font-size: 1.8rem;
     color: white;
+    text-wrap: nowrap;
     cursor: pointer;
   }
 }
 
 .hero__text {
   position: absolute;
-  bottom: 20vh;
   left: 5vw;
   z-index: 100;
   max-width: 80rem;
   text-align: left;
-
   h2 {
     margin-bottom: 2rem;
     font-size: 7.6rem;
@@ -167,30 +255,78 @@ body {
   }
 }
 
+.hero__text--presents {
+  @include for-tablet-landscape {
+    display: block;
+  }
+
+  @include for-phone-only {
+    bottom: 20vh;
+    left: 3rem;
+    max-width: 80%;
+  }
+  bottom: 30vh;
+  display: none;
+  max-width: 50rem;
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 6rem;
+    line-height: 1.1;
+  }
+
+  p {
+    margin-bottom: 3.7rem;
+    font-size: 1.8rem;
+  }
+}
+
+.hero__text--bath {
+  @include for-tablet-landscape {
+    display: none;
+  }
+  bottom: 20vh;
+  display: block;
+  max-width: 80rem;
+}
+
 .footer {
+  @include for-phone-only {
+    padding: 0 4rem;
+  }
   padding: 0 5vw;
   background-color: black;
-
   &__nav {
+    @include for-tablet-portrait {
+      flex-direction: column;
+      padding: 5rem 0;
+      gap: 80px;
+      .nav__list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 23px;
+      }
+    }
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 9rem 0;
     border-bottom: solid 0.5px rgba(38, 38, 38, 0.8);
-
     img {
       height: 2rem;
     }
 
     .nav__list {
+      @include for-tablet-landscape {
+        gap: 30px;
+      }
       display: flex;
       font-weight: 600;
       font-size: 1.4rem;
       text-transform: uppercase;
       letter-spacing: 1.4px;
-      gap: 130px;
-
+      gap: 80px;
       .nav__link a {
         cursor: pointer;
       }
@@ -198,13 +334,25 @@ body {
   }
 
   .stay-connected {
+    @include for-tablet-landscape {
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 0;
+      gap: 2rem;
+
+      &__text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 11rem 0;
     gap: 90px;
     border-bottom: solid 0.5px rgba(38, 38, 38, 0.8);
-
     &__text {
       h4 {
         font-size: 3.6rem;
@@ -216,9 +364,11 @@ body {
     }
 
     &__form {
+      @include for-phone-only {
+        width: 100%;
+      }
       position: relative;
       width: 70%;
-
       input {
         width: 100%;
         padding: 2rem 4rem;
@@ -255,19 +405,27 @@ body {
   }
 
   &__companies {
+    @include for-tablet-portrait {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 4rem 0;
     border-bottom: solid 0.5px rgba(38, 38, 38, 0.8);
-
     &__american,
     &__visa {
-      height: 8rem;
+      height: 10rem;
       opacity: 0.9;
     }
 
-    &__mastercard,
+    &__mastercard {
+      height: 7rem;
+      opacity: 0.9;
+    }
+
     &__fb,
     &__linkedin,
     &__yt,
@@ -279,13 +437,23 @@ body {
   }
 
   &__legal-links {
+    @include for-tablet-landscape {
+      flex-direction: column;
+      padding: 4rem 0;
+
+      // justify-content: center;
+      text-align: center;
+
+      span {
+        display: none;
+      }
+    }
     display: flex;
     align-items: center;
     padding: 6rem 0;
     font-size: 1.8rem;
     color: #4a4949;
     gap: 6px;
-
     a {
       cursor: pointer;
     }

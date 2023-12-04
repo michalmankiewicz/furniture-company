@@ -10,8 +10,11 @@
   <body>
     <section class="hero">
       <div class="video-container">
-        <video class="video" autoplay loop muted>
+        <video class="video--bath" autoplay loop muted>
           <source src="./assets/bath.mp4" type="video/mp4" />
+        </video>
+        <video class="video--presents" autoplay loop muted>
+          <source src="./assets/presents.mp4" type="video/mp4" />
         </video>
 
         <header class="header">
@@ -57,13 +60,21 @@
             <li class="nav__link"><a>Corporate sales</a></li>
           </ul>
         </header>
-        <div class="hero__text">
+        <div class="hero__text hero__text--bath">
           <h2>Buy a sofa get a weekend for two</h2>
           <p>
             Get a free hotel holiday in our capital’s highest quality hotels,
             Hotel Haven, Klaus K or Lilla Roberts when being your new bed
           </p>
           <button>Buy a sofa</button>
+        </div>
+        <div class="hero__text hero__text--presents">
+          <h2>The best designer gifts in a box</h2>
+          <p>
+            We listed the most desired design products, the most beautiful
+            domestic and most personal ideas in the package.
+          </p>
+          <button>See gift ideas</button>
         </div>
       </div>
     </section>
@@ -130,10 +141,9 @@
         <span> | </span>
         <a>Contract terms - Register statement </a>
         <span> | </span>
-        <span
-          >Copyright © Vepsäläinen 2022 | We reserve the right to price
-          changes</span
-        >
+        <p>
+          Copyright © Vepsäläinen 2022 | We reserve the right to price changes
+        </p>
       </div>
     </footer>
   </body>
