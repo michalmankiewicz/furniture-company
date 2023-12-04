@@ -5,6 +5,13 @@ body {
   color: white;
 }
 
+.section {
+  &__blank {
+    height: 80vh;
+    background-color: white;
+  }
+}
+
 .video-container {
   position: relative;
   width: 100%;
@@ -124,9 +131,10 @@ body {
   align-items: center;
   gap: 3rem;
 
-  .nav__link {
+  .nav__link a {
     font-size: 1.8rem;
     color: white;
+    cursor: pointer;
   }
 }
 
@@ -156,5 +164,130 @@ body {
     color: black;
     background-color: white;
     border-radius: 8px;
+  }
+}
+
+.footer {
+  padding: 0 5vw;
+  background-color: black;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 9rem 0;
+    border-bottom: solid 0.5px rgba(38, 38, 38, 0.8);
+
+    img {
+      height: 2rem;
+    }
+
+    .nav__list {
+      display: flex;
+      font-weight: 600;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      gap: 130px;
+
+      .nav__link a {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .stay-connected {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11rem 0;
+    gap: 90px;
+    border-bottom: solid 0.5px rgba(38, 38, 38, 0.8);
+
+    &__text {
+      h4 {
+        font-size: 3.6rem;
+      }
+      p {
+        font-size: 1.8rem;
+        color: #4a4949;
+      }
+    }
+
+    &__form {
+      position: relative;
+      width: 70%;
+
+      input {
+        width: 100%;
+        padding: 2rem 4rem;
+        font-size: 1.8rem;
+        color: #c4c4c4;
+        background-color: #4a4949;
+        border: none;
+        border-radius: 35px;
+      }
+
+      .form__submit {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 4.4rem;
+        height: 4.4rem;
+        background-color: #777676;
+        border: none;
+        border-radius: 100px;
+        transform: translateY(-50%);
+
+        img {
+          width: 2rem;
+
+          // color: black;
+
+          fill: black;
+        }
+      }
+    }
+  }
+
+  &__companies {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 0;
+    border-bottom: solid 0.5px rgba(38, 38, 38, 0.8);
+
+    &__american,
+    &__visa {
+      height: 8rem;
+      opacity: 0.9;
+    }
+
+    &__mastercard,
+    &__fb,
+    &__linkedin,
+    &__yt,
+    &__twitter,
+    &__reddit {
+      height: 5rem;
+      opacity: 0.9;
+    }
+  }
+
+  &__legal-links {
+    display: flex;
+    align-items: center;
+    padding: 6rem 0;
+    font-size: 1.8rem;
+    color: #4a4949;
+    gap: 6px;
+
+    a {
+      cursor: pointer;
+    }
   }
 }
